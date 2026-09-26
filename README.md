@@ -64,7 +64,8 @@ on-device menu. Developed and simulated in **Proteus**.
 
 ## Block Diagram
 
-![Block Diagram](block_diagram.jpg)
+<img width="601" height="440" alt="block_diagram" src="https://github.com/user-attachments/assets/b002529c-a784-4946-bc4a-c89820e08cde" />
+
 
 ---
 
