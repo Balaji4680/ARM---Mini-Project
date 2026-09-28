@@ -65,7 +65,8 @@ Settings (clock, alarm limits, password) are protected by a keypad password and 
 
 ### Labeled photo of the setup
 
-![Labeled hardware overview](images/01_hardware_overview_labeled.jpg)
+<img width="1500" height="971" alt="01_hardware_overview_labeled" src="https://github.com/user-attachments/assets/79616819-5b8a-40f1-8a41-15ab2f2a48fe" />
+
 
 ### Setup with the keypad connected
 
@@ -78,7 +79,8 @@ The 4x4 keypad plugs into the board through the flat ribbon cable (marked **7** 
 *  0  #  D
 ```
 
-![Hardware with keypad](images/02_hardware_with_keypad.jpg)
+<img width="1400" height="788" alt="02_hardware_with_keypad" src="https://github.com/user-attachments/assets/2c2352c4-acf6-4f5b-af07-5bb2c9a17e3a" />
+
 
 ---
 
@@ -181,11 +183,13 @@ DD/MM/YYYY S:x
 - `T:` is the temperature in °C.
 - `S:` is the gas status: **0 = safe**, **1 = gas above limit**.
 
-![Normal screen](images/03_lcd_normal_screen.jpg)
+<img width="1000" height="375" alt="03_lcd_normal_screen" src="https://github.com/user-attachments/assets/ca4aef92-8a77-4923-b0c9-9fc8a85e0bc8" />
+
 
 When the gas level goes above the limit, `S` changes to `1`:
 
-![Normal screen with gas detected](images/04_lcd_normal_screen_gas_detected.jpg)
+<img width="1000" height="350" alt="04_lcd_normal_screen_gas_detected" src="https://github.com/user-attachments/assets/09d8ead7-dc59-44e9-816c-77f08517cd9e" />
+
 
 ### 7.3 Alarm and alert
 
@@ -199,7 +203,9 @@ Press **Switch 2** to mute the buzzer and LED.
 
 | Temperature alert | Gas alert |
 |---|---|
-| ![Temp alert](images/10_lcd_alert_temp_high.jpg) | ![Gas alert](images/11_lcd_alert_gas_high.jpg) |
+|<img width="1000" height="544" alt="10_lcd_alert_temp_high" src="https://github.com/user-attachments/assets/50b2231a-8521-44d1-8c25-714210a48e1c" />
+ | <img width="1000" height="527" alt="11_lcd_alert_gas_high" src="https://github.com/user-attachments/assets/3f3057bc-da48-4a99-b32a-66297aeac620" />
+|
 
 Every 10 seconds, the last alarm event (time and value) is shown for 3 seconds, and the buzzer stays silent during that popup.
 
@@ -208,15 +214,18 @@ Every 10 seconds, the last alarm event (time and value) is shown for 3 seconds, 
 2. Type the password on the keypad (digits appear as `*`).
 3. Press any non-digit key (for example `#`) to confirm. Press **C** to delete the last digit.
 
-![Enter password](images/05_lcd_enter_password.jpg)
+<img width="1000" height="442" alt="05_lcd_enter_password" src="https://github.com/user-attachments/assets/b34fba12-250e-4c58-b354-749a5434d996" />
+
 
 **Wrong password** – shows *Access Denied* and beeps briefly.
 
-![Access denied](images/06_lcd_access_denied.jpg)
+<img width="1000" height="486" alt="06_lcd_access_denied" src="https://github.com/user-attachments/assets/bbed1ddf-4711-4a38-bca8-a8bb241c1a98" />
+
 
 **Three wrong tries in a row** – the system locks for 10 seconds with a countdown, then asks for the password again.
 
-![System locked](images/07_lcd_system_locked.jpg)
+<img width="1000" height="355" alt="07_lcd_system_locked" src="https://github.com/user-attachments/assets/74ac386e-29c9-44a6-8420-670c1b349781" />
+
 
 ### 7.5 Settings menu
 
@@ -225,7 +234,8 @@ Every 10 seconds, the last alarm event (time and value) is shown for 3 seconds, 
 3.PASS 4.EXIT
 ```
 
-![Settings menu](images/08_lcd_settings_menu.jpg)
+<img width="1000" height="346" alt="08_lcd_settings_menu" src="https://github.com/user-attachments/assets/78a3c5d6-5958-41a5-a366-7cacca36f5ba" />
+
 
 The menu closes by itself after **30 seconds** without a key press.
 
@@ -248,7 +258,8 @@ The menu closes by itself after **30 seconds** without a key press.
 | 6 | Year | 2000 – 2099 |
 | 7 | Exit | back to the previous menu |
 
-![RTC menu](images/09_lcd_rtc_edit_menu.jpg)
+<img width="1000" height="337" alt="09_lcd_rtc_edit_menu" src="https://github.com/user-attachments/assets/01b78c22-7327-43c4-9c67-938b147f7291" />
+
 
 Type the number and press a non-digit key (for example `#`) to save. Wrong values show *Invalid! Retry*.
 
@@ -328,8 +339,4 @@ Possible improvements: store settings in flash/EEPROM, add SMS or app notificati
 
 ## Author
 
-Add your name, college and year here.
-
-## License
-
-Add a license of your choice (for example MIT) or state that the project is for educational use.
+Balaji Pidikiti
