@@ -254,19 +254,9 @@ Type the number and press a non-digit key (for example `#`) to save. Wrong value
 
 ---
 
-## 8. Screenshots of every screen
+## 8. Block Diagram
 
-| Screen | Image |
-|---|---|
-| Normal screen | `images/03_lcd_normal_screen.jpg` |
-| Normal screen, gas detected | `images/04_lcd_normal_screen_gas_detected.jpg` |
-| Enter password | `images/05_lcd_enter_password.jpg` |
-| Access denied | `images/06_lcd_access_denied.jpg` |
-| System locked | `images/07_lcd_system_locked.jpg` |
-| Settings menu | `images/08_lcd_settings_menu.jpg` |
-| RTC edit menu | `images/09_lcd_rtc_edit_menu.jpg` |
-| Temperature alert | `images/10_lcd_alert_temp_high.jpg` |
-| Gas alert | `images/11_lcd_alert_gas_high.jpg` |
+<img width="601" height="440" alt="image" src="https://github.com/user-attachments/assets/9ccf61af-29a1-4d25-bf9b-551c217d352c" />
 
 ---
 
