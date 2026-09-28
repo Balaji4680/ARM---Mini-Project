@@ -16,12 +16,11 @@ Settings (clock, alarm limits, password) are protected by a keypad password and 
 5. [Project files](#5-project-files)
 6. [Build and flash – step by step](#6-build-and-flash--step-by-step)
 7. [How to use the system](#7-how-to-use-the-system)
-8. [Block Diagram](#8-screenshots-of-every-screen)
+8. [Block Diagram](#8-Block Diagram)
 9. [Changing the default settings](#9-changing-the-default-settings)
 10. [How the code is organised](#10-how-the-code-is-organised)
 11. [Troubleshooting](#11-troubleshooting)
 12. [Known limitations](#12-known-limitations)
-13. [Uploading this project to GitHub](#13-uploading-this-project-to-github)
 
 ---
 
