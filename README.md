@@ -214,7 +214,8 @@ Press **Switch 2** to mute the buzzer and LED.
 
  Gas alert
  
- <img width="568" height="233" alt="WhatsApp Image 2026-09-29 at 12 55 12 AM" src="https://github.com/user-attachments/assets/1fa95c70-8c11-44e6-bf9f-7aa7ff8615a9" />
+ <img width="496" height="202" alt="WhatsApp Image 2026-09-29 at 12 55 12 AM" src="https://github.com/user-attachments/assets/ad606707-162c-4ead-bd1c-d4ffdd96124c" />
+
 
 
 
