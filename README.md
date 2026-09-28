@@ -17,15 +17,20 @@ Settings (clock, alarm limits, password) are protected by a keypad password and 
 5. [Project files](#5-project-files)
 6. [Build and flash – step by step](#6-build-and-flash--step-by-step)
 7. [How to use the system](#7-how-to-use-the-system)
-8. [Block Diagram](#8-screenshots-of-every-screen)
-9. [Changing the default settings](#9-changing-the-default-settings)
-10. [How the code is organised](#10-how-the-code-is-organised)
-11. [Troubleshooting](#11-troubleshooting)
-12. [Known limitations](#12-known-limitations)
+8. [Changing the default settings](#9-changing-the-default-settings)
+9. [How the code is organised](#10-how-the-code-is-organised)
+10. [Troubleshooting](#11-troubleshooting)
+11. [Known limitations](#12-known-limitations)
 
 ---
 
 ## 1. What the project does
+
+Block Diagram
+
+<img width="601" height="440" alt="block_diagram" src="https://github.com/user-attachments/assets/77b90455-faad-443c-9160-079423600d65" />
+
+
 
 | Feature | Description |
 |---|---|
@@ -265,12 +270,9 @@ Type the number and press a non-digit key (for example `#`) to save. Wrong value
 
 ---
 
-## 8. Block Diagram
-<img width="601" height="440" alt="image" src="https://github.com/user-attachments/assets/cf7b986d-b354-4c84-9418-8a478b432bfa" />
-
 ---
 
-## 9. Changing the default settings
+## 8. Changing the default settings
 
 Open `src/main.c` and edit the `#define` lines at the top:
 
@@ -287,7 +289,7 @@ Rebuild and flash again after any change. The alert duration is the `delay_ms(25
 
 ---
 
-## 10. How the code is organised
+## 9. How the code is organised
 
 `main.c` is split into numbered sections, so you can read it top to bottom:
 
@@ -310,7 +312,7 @@ Rebuild and flash again after any change. The alert duration is the `delay_ms(25
 
 ---
 
-## 11. Troubleshooting
+## 10. Troubleshooting
 
 | Problem | Likely cause and fix |
 |---|---|
@@ -325,7 +327,7 @@ Rebuild and flash again after any change. The alert duration is the `delay_ms(25
 
 ---
 
-## 12. Known limitations
+## 11. Known limitations
 
 - The password, temperature limit and gas limit are stored in RAM only. **They return to the defaults after a power cycle.**
 - While the 2.5-second alert or a delay screen is showing, the sensors are not read.
