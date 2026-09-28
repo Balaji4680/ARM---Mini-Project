@@ -188,12 +188,14 @@ DD/MM/YYYY S:x
 - `T:` is the temperature in °C.
 - `S:` is the gas status: **0 = safe**, **1 = gas above limit**.
 
-<img width="1000" height="375" alt="03_lcd_normal_screen" src="https://github.com/user-attachments/assets/ca4aef92-8a77-4923-b0c9-9fc8a85e0bc8" />
+<img width="411" height="165" alt="WhatsApp Image 2026-09-29 at 12 5 12 AM" src="https://github.com/user-attachments/assets/53544444-2789-4eed-94f6-908e30ecabc0" />
+
 
 
 When the gas level goes above the limit, `S` changes to `1`:
 
-<img width="1000" height="350" alt="04_lcd_normal_screen_gas_detected" src="https://github.com/user-attachments/assets/09d8ead7-dc59-44e9-816c-77f08517cd9e" />
+<img width="411" height="165" alt="WhatsApp Image 2026-09-29 a12 55 11 AM" src="https://github.com/user-attachments/assets/b28a05b3-c1b9-410f-a31b-5f4dc8a626a8" />
+
 
 
 ### 7.3 Alarm and alert
@@ -207,9 +209,13 @@ When temperature or gas **first goes above its limit**:
 Press **Switch 2** to mute the buzzer and LED.
 
  Temperature alert
-<img width="1000" height="544" alt="10_lcd_alert_temp_high" src="https://github.com/user-attachments/assets/50b2231a-8521-44d1-8c25-714210a48e1c" />
+ 
+ <img width="369" height="151" alt="WhatsApp Image 2026-09-29 at 12 55 11 AM" src="https://github.com/user-attachments/assets/d4a71d7b-f4ef-4066-8e9c-954abd9936b2" />
+
  Gas alert
- <img width="1000" height="527" alt="11_lcd_alert_gas_high" src="https://github.com/user-attachments/assets/3f3057bc-da48-4a99-b32a-66297aeac620" />
+ 
+ <img width="568" height="233" alt="WhatsApp Image 2026-09-29 at 12 55 12 AM" src="https://github.com/user-attachments/assets/1fa95c70-8c11-44e6-bf9f-7aa7ff8615a9" />
+
 
 
 Every 10 seconds, the last alarm event (time and value) is shown for 3 seconds, and the buzzer stays silent during that popup.
@@ -219,17 +225,20 @@ Every 10 seconds, the last alarm event (time and value) is shown for 3 seconds, 
 2. Type the password on the keypad (digits appear as `*`).
 3. Press any non-digit key (for example `#`) to confirm. Press **C** to delete the last digit.
 
-<img width="1000" height="442" alt="05_lcd_enter_password" src="https://github.com/user-attachments/assets/b34fba12-250e-4c58-b354-749a5434d996" />
+<img width="421" height="179" alt="WhatsApp Image 2026-09-29 at 12 55 14AM" src="https://github.com/user-attachments/assets/73f7bf1b-e85e-4f7b-8dcf-b772f4bb9476" />
+
 
 
 **Wrong password** – shows *Access Denied* and beeps briefly.
 
-<img width="1000" height="486" alt="06_lcd_access_denied" src="https://github.com/user-attachments/assets/bbed1ddf-4711-4a38-bca8-a8bb241c1a98" />
+<img width="405" height="159" alt="WhatsApp Image 2026-09-29 at 12 55 1AM" src="https://github.com/user-attachments/assets/f9d041b2-028b-4795-b4df-8f5851c40004" />
+
 
 
 **Three wrong tries in a row** – the system locks for 10 seconds with a countdown, then asks for the password again.
 
-<img width="1000" height="355" alt="07_lcd_system_locked" src="https://github.com/user-attachments/assets/74ac386e-29c9-44a6-8420-670c1b349781" />
+<img width="399" height="152" alt="WhatsApp Image 2026-09-29 at 12 55 14 AM" src="https://github.com/user-attachments/assets/375fb9cf-d285-4342-b072-3fec7f63a1e7" />
+
 
 
 ### 7.5 Settings menu
@@ -239,7 +248,8 @@ Every 10 seconds, the last alarm event (time and value) is shown for 3 seconds, 
 3.PASS 4.EXIT
 ```
 
-<img width="1000" height="346" alt="08_lcd_settings_menu" src="https://github.com/user-attachments/assets/78a3c5d6-5958-41a5-a366-7cacca36f5ba" />
+<img width="491" height="198" alt="menu" src="https://github.com/user-attachments/assets/9d6e0b7c-2833-43a3-9e56-59e80ac557b0" />
+
 
 
 The menu closes by itself after **30 seconds** without a key press.
@@ -263,7 +273,8 @@ The menu closes by itself after **30 seconds** without a key press.
 | 6 | Year | 2000 – 2099 |
 | 7 | Exit | back to the previous menu |
 
-<img width="1000" height="337" alt="09_lcd_rtc_edit_menu" src="https://github.com/user-attachments/assets/01b78c22-7327-43c4-9c67-938b147f7291" />
+<img width="496" height="207" alt="WhatsApp Image 2026-09-29 at 12 55 13 AM" src="https://github.com/user-attachments/assets/9bdc7a63-8c4c-44e0-b05f-64fb92acc3c6" />
+
 
 
 Type the number and press a non-digit key (for example `#`) to save. Wrong values show *Invalid! Retry*.
