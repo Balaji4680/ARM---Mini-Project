@@ -202,10 +202,10 @@ When temperature or gas **first goes above its limit**:
 Press **Switch 2** to mute the buzzer and LED.
 
  Temperature alert
-|<img width="1000" height="544" alt="10_lcd_alert_temp_high" src="https://github.com/user-attachments/assets/50b2231a-8521-44d1-8c25-714210a48e1c" />
+<img width="1000" height="544" alt="10_lcd_alert_temp_high" src="https://github.com/user-attachments/assets/50b2231a-8521-44d1-8c25-714210a48e1c" />
  Gas alert
  <img width="1000" height="527" alt="11_lcd_alert_gas_high" src="https://github.com/user-attachments/assets/3f3057bc-da48-4a99-b32a-66297aeac620" />
-|
+
 
 Every 10 seconds, the last alarm event (time and value) is shown for 3 seconds, and the buzzer stays silent during that popup.
 
