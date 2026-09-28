@@ -4,7 +4,6 @@ A password-protected kitchen safety monitor built on the **LPC2148 (ARM7)** micr
 
 Settings (clock, alarm limits, password) are protected by a keypad password and are edited from an on-screen menu.
 
-> **Project ID:** V25HE11B5 (shown on the LCD at start-up)
 
 ---
 
