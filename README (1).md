@@ -44,7 +44,7 @@ Settings (clock, alarm limits, password) are protected by a keypad password and 
 | Item | Default |
 |---|---|
 | Temperature limit | 40 °C |
-| Gas limit | 300 (scale 0–1023) |
+| Gas limit | 600 (scale 0–1023) |
 | Password | `1234` |
 | Menu time-out | 30 seconds |
 
