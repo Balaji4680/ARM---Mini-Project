@@ -4,7 +4,7 @@ A password-protected kitchen safety monitor built on the **LPC2148 (ARM7)** micr
 
 Settings (clock, alarm limits, password) are protected by a keypad password and are edited from an on-screen menu.
 
-> **Project ID:** V25HE11B5 (shown on the LCD at start-up)
+> 
 
 ---
 
@@ -17,12 +17,11 @@ Settings (clock, alarm limits, password) are protected by a keypad password and 
 5. [Project files](#5-project-files)
 6. [Build and flash – step by step](#6-build-and-flash--step-by-step)
 7. [How to use the system](#7-how-to-use-the-system)
-8. [Screenshots of every screen](#8-screenshots-of-every-screen)
+8. [Block Diagram](#8-screenshots-of-every-screen)
 9. [Changing the default settings](#9-changing-the-default-settings)
 10. [How the code is organised](#10-how-the-code-is-organised)
 11. [Troubleshooting](#11-troubleshooting)
 12. [Known limitations](#12-known-limitations)
-13. [Uploading this project to GitHub](#13-uploading-this-project-to-github)
 
 ---
 
@@ -255,19 +254,8 @@ Type the number and press a non-digit key (for example `#`) to save. Wrong value
 
 ---
 
-## 8. Screenshots of every screen
-
-| Screen | Image |
-|---|---|
-| Normal screen | `images/03_lcd_normal_screen.jpg` |
-| Normal screen, gas detected | `images/04_lcd_normal_screen_gas_detected.jpg` |
-| Enter password | `images/05_lcd_enter_password.jpg` |
-| Access denied | `images/06_lcd_access_denied.jpg` |
-| System locked | `images/07_lcd_system_locked.jpg` |
-| Settings menu | `images/08_lcd_settings_menu.jpg` |
-| RTC edit menu | `images/09_lcd_rtc_edit_menu.jpg` |
-| Temperature alert | `images/10_lcd_alert_temp_high.jpg` |
-| Gas alert | `images/11_lcd_alert_gas_high.jpg` |
+## 8. Block Diagram
+<img width="601" height="440" alt="image" src="https://github.com/user-attachments/assets/cf7b986d-b354-4c84-9418-8a478b432bfa" />
 
 ---
 
@@ -335,61 +323,6 @@ Rebuild and flash again after any change. The alert duration is the `delay_ms(25
 Possible improvements: store settings in flash/EEPROM, add SMS or app notifications, add a relay to switch off a gas valve.
 
 ---
-
-## 13. Uploading this project to GitHub
-
-**Where to upload:** GitHub (github.com). It shows `README.md` on the front page of the repository and displays the images automatically, as long as the folder structure is kept.
-
-### Folder structure to upload
-
-```
-kitchen-safety-system/
-├── README.md
-├── src/
-│   └── main.c        (plus your driver .c/.h files, if you want them in the repo)
-└── images/
-    ├── 01_hardware_overview_labeled.jpg
-    ├── 02_hardware_with_keypad.jpg
-    ├── 03_lcd_normal_screen.jpg
-    ├── 04_lcd_normal_screen_gas_detected.jpg
-    ├── 05_lcd_enter_password.jpg
-    ├── 06_lcd_access_denied.jpg
-    ├── 07_lcd_system_locked.jpg
-    ├── 08_lcd_settings_menu.jpg
-    ├── 09_lcd_rtc_edit_menu.jpg
-    ├── 10_lcd_alert_temp_high.jpg
-    └── 11_lcd_alert_gas_high.jpg
-```
-
-### Option A – Upload in the browser (easiest, no software needed)
-
-1. Sign in at **github.com** (create a free account if you do not have one).
-2. Click **+ → New repository**.
-3. Name it, for example `kitchen-safety-heat-gas-monitoring`, choose **Public**, and click **Create repository**.
-4. Click **uploading an existing file**.
-5. Open the `kitchen-safety-system` folder on your computer, select **everything inside it** (`README.md`, `src`, `images`) and drag it into the browser window. Dragging folders keeps the structure.
-6. Scroll down, write a message such as `Add project files`, and click **Commit changes**.
-7. Open the repository page. The README and the pictures should display.
-
-### Option B – Using Git (command line)
-
-```bash
-cd kitchen-safety-system
-git init
-git add .
-git commit -m "Add kitchen safety monitoring project"
-git branch -M main
-git remote add origin https://github.com/<your-username>/kitchen-safety-heat-gas-monitoring.git
-git push -u origin main
-```
-
-Replace `<your-username>` with your GitHub user name.
-
-### Checklist before sharing
-- [ ] `README.md` is in the top folder, not inside another folder
-- [ ] The `images` folder name and the file names match exactly (they are case-sensitive)
-- [ ] `src/main.c` is uploaded
-- [ ] Add a short repository description and topics such as `lpc2148`, `arm7`, `embedded-c`, `keil`, `mq2`, `lm35`
 
 ---
 
