@@ -1,85 +1,80 @@
-<h1 align="center">🔥 Kitchen Safety – Heat & Gas Monitoring System</h1>
+# Kitchen Safety Monitor: Temperature and Gas Alarm (LPC2148)
+
+A keypad-protected safety monitor for the kitchen, built around the **LPC2148 (ARM7)**. It watches temperature and gas concentration, displays them next to a live clock, and sounds a buzzer with an LED the moment either one crosses its limit.
+
+![MCU](https://img.shields.io/badge/MCU-LPC2148%20(ARM7)-blue?style=for-the-badge)
+![IDE](https://img.shields.io/badge/IDE-Keil%20%C2%B5Vision-orange?style=for-the-badge)
+![Language](https://img.shields.io/badge/Language-Embedded%20C-green?style=for-the-badge)
+![Sensors](https://img.shields.io/badge/Sensors-LM35%20%7C%20MQ--2-red?style=for-the-badge)
 
 <p align="center">
-  A password-protected kitchen safety monitor built on the <b>LPC2148 (ARM7)</b> microcontroller.<br/>
-  Measures <b>temperature</b> and <b>gas level</b>, shows them live with a real-time clock, and raises a <b>buzzer + LED alarm</b> the moment a limit is crossed.
-</p>
-
-<p align="center">
-  <img alt="MCU" src="https://img.shields.io/badge/MCU-LPC2148%20(ARM7)-blue?style=for-the-badge"/>
-  <img alt="IDE" src="https://img.shields.io/badge/IDE-Keil%20%C2%B5Vision-orange?style=for-the-badge"/>
-  <img alt="Language" src="https://img.shields.io/badge/Language-Embedded%20C-green?style=for-the-badge"/>
-  <img alt="Sensors" src="https://img.shields.io/badge/Sensors-LM35%20%7C%20MQ--2-red?style=for-the-badge"/>
-</p>
-
-<p align="center">
-  <img width="601" height="440" alt="Block diagram of the kitchen safety system" src="https://github.com/user-attachments/assets/77b90455-faad-443c-9160-079423600d65" />
+  <img width="601" height="440" alt="System block diagram" src="https://github.com/user-attachments/assets/77b90455-faad-443c-9160-079423600d65" />
   <br/>
   <sub><i>System block diagram</i></sub>
 </p>
 
 ---
 
-## 📑 Table of Contents
+## Contents
 
-1. [Overview](#-overview)
-2. [Hardware Required](#-hardware-required)
-3. [Pin Connections](#-pin-connections)
-4. [Software Required](#-software-required)
-5. [Project Structure](#-project-structure)
-6. [Build and Flash](#-build-and-flash)
-7. [How to Use](#-how-to-use)
-8. [Customising the Defaults](#-customising-the-defaults)
-9. [Code Organisation](#-code-organisation)
-10. [Troubleshooting](#-troubleshooting)
-11. [Limitations and Future Work](#-limitations-and-future-work)
-12. [Author](#-author)
+- [About the Project](#about-the-project)
+- [Components](#components)
+- [Wiring](#wiring)
+- [Tools and Drivers](#tools-and-drivers)
+- [Repository Layout](#repository-layout)
+- [Build and Flash](#build-and-flash)
+- [Operating the System](#operating-the-system)
+- [Configuration](#configuration)
+- [Code Walkthrough](#code-walkthrough)
+- [Troubleshooting](#troubleshooting)
+- [Known Limitations and Roadmap](#known-limitations-and-roadmap)
+- [Credits](#credits)
 
 ---
 
-## 🎯 Overview
+## About the Project
 
-The system continuously reads a **LM35** temperature sensor and an **MQ-2** gas sensor. The live values and the real-time clock appear on a 16x2 LCD. If either reading goes above its limit, the buzzer and LED turn on and an alert message is displayed. All settings are protected by a keypad password and are edited from an on-screen menu.
+An **LM35** temperature sensor and an **MQ-2** gas sensor are sampled continuously. Readings and the real-time clock are shown on a 16x2 LCD. When a reading rises above its limit, the buzzer and LED switch on and a warning message appears. Every setting sits behind a numeric password and is changed through an on-screen menu using the keypad.
 
-### ✨ Features
+### Key Features
 
-| Feature | Description |
+| Feature | Details |
 |---|---|
-| 📊 **Live monitoring** | Reads temperature and gas level continuously |
-| 🕒 **Real-time clock** | Shows time and date, kept running by the board's RTC battery |
-| 🚨 **Alarm** | Buzzer and LED turn ON when temperature or gas goes above its limit |
-| ⚠️ **Alert message** | `ALERT!!` with `TEMP IS HIGH!` or `GAS IS HIGH!` is shown for 2.5 s when a limit is first crossed |
-| 🔇 **Alarm mute** | Switch 2 silences the buzzer and LED |
-| 📜 **Event history** | The last alarm (time + value) pops up every 10 s for 3 s |
-| 🔐 **Password protection** | The settings menu opens only with the correct password |
-| 🔒 **Auto-lock** | 3 wrong passwords lock the system for 10 s |
-| ⚙️ **Settings menu** | Change the clock, temperature/gas limits and password from the keypad |
+| Live monitoring | Temperature and gas level are read continuously |
+| Real-time clock | Time and date are shown and kept alive by the board's RTC battery |
+| Alarm output | Buzzer and LED turn on when temperature or gas exceeds its limit |
+| On-screen alert | `ALERT!!` plus `TEMP IS HIGH!` or `GAS IS HIGH!` for 2.5 s on first crossing |
+| Mute | Switch 2 silences the buzzer and LED |
+| Event history | The last alarm (time and value) pops up for 3 s every 10 s |
+| Password protection | The settings menu opens only after the correct password |
+| Auto-lock | Three wrong attempts lock the system for 10 s |
+| Settings menu | Change clock, limits and password from the keypad |
 
-### 🔧 Default Values
+### Factory Defaults
 
-| Item | Default |
+| Setting | Value |
 |---|---|
-| Temperature limit | `40 °C` |
-| Gas limit | `300` (scale 0–1023) |
+| Temperature limit | 40 °C |
+| Gas limit | 300 (range 0-1023) |
 | Password | `1234` |
-| Menu time-out | `30 seconds` |
+| Menu time-out | 30 s |
 
 ---
 
-## 🧰 Hardware Required
+## Components
 
-| # | Component | Purpose |
+| # | Part | Role |
 |:-:|---|---|
-| 1 | LPC2148 ARM7 development board (Vector India *Advanced Development Board for ARM7*) | Main controller, on-board LCD, buzzer, LEDs, switches, RTC |
-| 2 | 16x2 character LCD | Displays everything (on the board) |
-| 3 | 4x4 matrix keypad | Enter the password and numbers |
-| 4 | MQ-2 gas sensor module | Detects gas / smoke |
-| 5 | LM35 temperature sensor | Measures temperature (10 mV per °C) |
+| 1 | LPC2148 ARM7 board (Vector India *Advanced Development Board for ARM7*) | Controller, with on-board LCD, buzzer, LEDs, switches and RTC |
+| 2 | 16x2 character LCD | Display (on the board) |
+| 3 | 4x4 matrix keypad | Password and number entry |
+| 4 | MQ-2 gas sensor module | Gas and smoke detection |
+| 5 | LM35 temperature sensor | Temperature (10 mV per °C) |
 | 6 | Buzzer | Audible alarm (on the board) |
-| 7 | External 5 V / 3.3 V power supply board | Powers the sensors and the board |
-| 8 | Jumper wires, small perfboard | Connections |
+| 7 | 5 V / 3.3 V external power board | Supply for sensors and board |
+| 8 | Jumper wires and small perfboard | Connections |
 
-### 📷 Hardware Photos
+### Photos
 
 <table align="center">
   <tr>
@@ -89,122 +84,120 @@ The system continuously reads a **LM35** temperature sensor and an **MQ-2** gas 
     </td>
     <td align="center" width="50%">
       <img width="100%" alt="Hardware with keypad connected" src="https://github.com/user-attachments/assets/2c2352c4-acf6-4f5b-af07-5bb2c9a17e3a" /><br/>
-      <sub><b>Setup with the keypad connected</b></sub>
+      <sub><b>Keypad connected</b></sub>
     </td>
   </tr>
 </table>
 
-The 4x4 keypad plugs into the board through the flat ribbon cable (marked **7** in the labeled photo).
+The keypad connects through the flat ribbon cable marked **7** in the labeled photo.
 
 ---
 
-## 🔌 Pin Connections
+## Wiring
 
-These pins come from the `#define` lines at the top of `src/main.c`.
+Pins are taken from the `#define` lines at the top of `src/main.c`.
 
-| Function | LPC2148 Pin | Notes |
+| Function | Pin | Notes |
 |---|---|---|
 | Buzzer | `P0.28` (`BUZZER_PIN`) | Output |
 | Alarm LED | `P0.30` (`LED_PIN`) | Output |
-| Switch 1 – open settings menu | `P0.1` | Hardware interrupt (EINT0) |
-| Switch 2 – mute alarm | `P0.3` (`SWITCH2_PIN`) | Input, active-low (pressed = 0) |
+| Switch 1: open settings | `P0.1` | External interrupt (EINT0) |
+| Switch 2: mute alarm | `P0.3` (`SWITCH2_PIN`) | Input, active-low |
 | MQ-2 gas sensor | `P0.29` (AIN2) | Analog input, ADC channel 2 |
-| LM35 temperature sensor | ADC pin used by `LM35.c` | Analog input *(write the exact pin/channel here)* |
-| LCD, keypad, RTC | On-board connections | Handled by `LCD.c`, `KPM.c`, `RTC.c` |
+| LM35 temperature sensor | ADC pin set in `LM35.c` | Analog input (**fill in exact pin/channel**) |
+| LCD, keypad, RTC | On-board | Handled by `LCD.c`, `KPM.c`, `RTC.c` |
 
 > [!IMPORTANT]
-> If you change a pin in the `#define` lines, change the physical wire as well. Never put two functions on the same pin.
+> If you change a pin in the code, move the physical wire too, and never assign two functions to one pin.
 
 ---
 
-## 💻 Software Required
+## Tools and Drivers
 
-| Tool | Use |
+| Tool | Purpose |
 |---|---|
-| **Keil µVision** (ARM/MDK) | Write, compile and build the project (the code uses the Keil `__irq` keyword and `<lpc21xx.h>`) |
-| **Flash Magic** | Send the `.hex` file to the LPC2148 through the serial (UART) port |
-| **USB-to-serial cable or the board's DB9 port** | Connection between PC and board for flashing |
+| **Keil µVision (MDK-ARM)** | Compile and build (the code uses the Keil `__irq` keyword and `<lpc21xx.h>`) |
+| **Flash Magic** | Download the `.hex` file over UART |
+| **USB-to-serial cable or the board's DB9 port** | PC-to-board link for flashing |
 
----
-
-## 📁 Project Structure
-
-```
-kitchen-safety-system/
-├── README.md              <- this file
-├── src/
-│   └── main.c             <- the main program
-└── images/                <- photos used in this README
-```
-
-`main.c` also uses your lab's driver files. Keep them in the **same Keil project** as `main.c`:
+`main.c` relies on these driver files. Keep them in the same Keil project, with their `.c` files added as well:
 
 | Header | Provides |
 |---|---|
 | `types.h` | `u32`, `s32`, `u8`, `f32` type names |
 | `delay.h` | `delay_ms()` |
 | `ADC.h`, `ADC_defines.h` | ADC setup and `Read_ADC()` |
-| `LCD.h`, `LCD_defines.h` | LCD commands and printing (`StrLCD`, `U32LCD`, `S32LCD`, …) |
-| `LM35.h` | `LM35tC()` – returns temperature in °C |
-| `KPM.h` | Keypad functions (`Init_KPM`, `KeyScan`, `ColScan`) |
-| `RTC.h` | RTC functions (`RTC_Init`, `GetRTCTimeInfo`, `SetRTCTimeInfo`, …) |
-
-Copy the matching `.c` files of these drivers into the project folder too, and add them to the Keil project.
+| `LCD.h`, `LCD_defines.h` | LCD commands and printing (`StrLCD`, `U32LCD`, `S32LCD`, ...) |
+| `LM35.h` | `LM35tC()`, returns temperature in °C |
+| `KPM.h` | `Init_KPM`, `KeyScan`, `ColScan` |
+| `RTC.h` | `RTC_Init`, `GetRTCTimeInfo`, `SetRTCTimeInfo`, ... |
 
 ---
 
-## 🚀 Build and Flash
+## Repository Layout
+
+```
+kitchen-safety-system/
+├── README.md
+├── src/
+│   └── main.c        # main program
+└── images/           # pictures used in this README
+```
+
+---
+
+## Build and Flash
 
 <details open>
-<summary><b>Step 1 – Create the Keil project</b></summary>
+<summary><b>1. Create the Keil project</b></summary>
 
-1. Open Keil µVision → **Project → New µVision Project**.
-2. Choose a folder, give it a name, and select the device **NXP → LPC2148**.
-3. When asked to copy the *Startup file*, click **Yes**.
+1. In Keil µVision choose **Project → New µVision Project**.
+2. Pick a folder and name, then select **NXP → LPC2148**.
+3. Click **Yes** when asked to copy the startup file.
 </details>
 
 <details open>
-<summary><b>Step 2 – Add the source files</b></summary>
+<summary><b>2. Add the source files</b></summary>
 
-1. Copy `main.c` and all driver `.c` / `.h` files into the project folder.
-2. In the *Project* panel, right-click **Source Group 1 → Add Existing Files to Group** and add `main.c` plus every driver `.c` file.
+1. Copy `main.c` and every driver `.c` / `.h` file into the project folder.
+2. Right-click **Source Group 1 → Add Existing Files to Group** and add `main.c` and all driver `.c` files.
 </details>
 
 <details open>
-<summary><b>Step 3 – Set the clock and create the HEX file</b></summary>
+<summary><b>3. Configure clock and output</b></summary>
 
-1. **Project → Options for Target → Target**: set the crystal (Xtal) to **12 MHz**.
-2. Open the **Output** tab and tick **Create HEX File**.
-3. The code assumes a peripheral clock (PCLK) of **15 MHz** (`T0PR = 14999` gives a 1 ms timer tick). If your startup configuration uses a different PCLK, adjust this value.
+1. **Project → Options for Target → Target**: set Xtal to **12 MHz**.
+2. On the **Output** tab, tick **Create HEX File**.
+3. The code assumes PCLK = **15 MHz** (`T0PR = 14999` gives a 1 ms tick). Adjust it if your startup file uses another PCLK.
 </details>
 
 <details open>
-<summary><b>Step 4 – Build</b></summary>
+<summary><b>4. Build</b></summary>
 
-Press **F7**. Fix any errors until you see `0 Error(s)`. A `.hex` file appears in the output folder.
+Press **F7** and fix errors until it reports `0 Error(s)`. The `.hex` file is created in the output folder.
 </details>
 
 <details open>
-<summary><b>Step 5 – Flash the board</b></summary>
+<summary><b>5. Flash</b></summary>
 
-1. Connect the board to the PC with a serial cable and power it on.
-2. Move the **ISP switch** to the *program* position and press **RST**.
-3. Open **Flash Magic**, choose device **LPC2148**, the correct **COM port**, baud rate **9600** (or as your lab specifies), and select the `.hex` file.
+1. Connect the board to the PC by serial cable and power it on.
+2. Set the **ISP switch** to *program* and press **RST**.
+3. In **Flash Magic** select **LPC2148**, the right **COM port**, baud **9600** (or as your lab specifies), and the `.hex` file.
 4. Click **Start** and wait for *Finished*.
-5. Move the ISP switch back to the *run* position and press **RST**.
+5. Return the ISP switch to *run* and press **RST**.
 
-The Vector ID and project title should now appear on the LCD.
+The Vector ID and project title should appear on the LCD.
 </details>
 
 ---
 
-## 🕹️ How to Use
+## Operating the System
 
-### 1. Start-up
+### Start-up
 
-The LCD first shows the **Vector ID**, then the project title scrolling across the second line. After that the normal screen appears.
+The LCD shows the Vector ID, then the project title scrolls along the second line, followed by the normal screen.
 
-### 2. Normal Screen
+### Normal Screen
 
 ```
 HH:MM:SS T:xx°C
@@ -212,7 +205,7 @@ DD/MM/YYYY S:x
 ```
 
 - `T:` is the temperature in °C.
-- `S:` is the gas status: **0 = safe**, **1 = gas above limit**.
+- `S:` is gas status: **0** = safe, **1** = above limit.
 
 <table align="center">
   <tr>
@@ -225,14 +218,14 @@ DD/MM/YYYY S:x
   </tr>
 </table>
 
-### 3. Alarm and Alert
+### Alarm Behaviour
 
-When temperature or gas **first goes above its limit**:
+When temperature or gas first goes over its limit:
 
-1. The buzzer and LED turn ON.
-2. The LCD shows an alert for 2.5 seconds.
-3. The event (time + value) is saved and the LCD returns to the normal screen.
-4. The buzzer and LED stay ON until the reading falls back to the limit or below, or until **Switch 2** is pressed to mute them.
+1. Buzzer and LED turn on.
+2. An alert is shown for 2.5 s.
+3. The event (time and value) is stored and the normal screen returns.
+4. Buzzer and LED stay on until the reading drops back to the limit or below, or until **Switch 2** is pressed.
 
 <table align="center">
   <tr>
@@ -245,9 +238,7 @@ When temperature or gas **first goes above its limit**:
   </tr>
 </table>
 
-> **Last-event popup:** every 10 seconds, the last alarm event (time and value) is shown for 3 seconds. The buzzer stays silent during the popup.
-
-#### Alarm logic
+> **Last-event popup:** every 10 s the most recent alarm (time and value) is shown for 3 s. The buzzer stays quiet during the popup.
 
 ```mermaid
 flowchart LR
@@ -260,11 +251,11 @@ flowchart LR
 
 Switch 2 mutes the buzzer and LED at any time.
 
-### 4. Open the Settings Menu
+### Opening the Settings Menu
 
 1. Press **Switch 1**.
-2. Type the password on the keypad (digits appear as `*`).
-3. Press any non-digit key (for example `#`) to confirm. Press **C** to delete the last digit.
+2. Type the password (digits show as `*`).
+3. Press any non-digit key such as `#` to confirm. **C** deletes the last digit.
 
 <table align="center">
   <tr>
@@ -280,11 +271,11 @@ Switch 2 mutes the buzzer and LED at any time.
   <tr>
     <td align="center"><sub>Digits appear as <code>*</code></sub></td>
     <td align="center"><sub><i>Access Denied</i> and a short beep</sub></td>
-    <td align="center"><sub>Locked for 10 s with a countdown, then the password is asked again</sub></td>
+    <td align="center"><sub>10 s lock with countdown, then password is asked again</sub></td>
   </tr>
 </table>
 
-### 5. Settings Menu
+### Settings Menu
 
 ```
 1.RTC 2.SET  30     <- number = seconds left to choose
@@ -306,16 +297,14 @@ Switch 2 mutes the buzzer and LED at any time.
   </tr>
 </table>
 
-The menu closes by itself after **30 seconds** without a key press.
+The menu closes on its own after **30 s** without a key press.
 
-| Key | Option | What it does |
+| Key | Option | Action |
 |:-:|---|---|
-| **1** | RTC | Set the clock and date (see [RTC menu](#6-rtc-menu)) |
-| **2** | SET | `1.TEMP` – set the temperature limit (0–200 °C), `2.GAS` – set the gas limit (0–1023) |
-| **3** | PASS | Change the password: enter the current password, then the new one, then confirm it |
+| **1** | RTC | Set clock and date |
+| **2** | SET | `1.TEMP` sets the temperature limit (0-200 °C); `2.GAS` sets the gas limit (0-1023) |
+| **3** | PASS | Change password: current, then new, then confirm |
 | **4** | EXIT | Return to the normal screen |
-
-#### Access and menu flow
 
 ```mermaid
 flowchart LR
@@ -330,60 +319,57 @@ flowchart LR
     D --> I["4 EXIT<br/>normal screen"]
 ```
 
-### 6. RTC Menu
+### RTC Menu
 
-| Key | Sets | Allowed range |
+| Key | Sets | Range |
 |:-:|---|---|
-| **1** | Hour | 0 – 23 |
-| **2** | Minute | 0 – 59 |
-| **3** | Second | 0 – 59 |
-| **4** | Date | 1 – 31 |
-| **5** | Month | 1 – 12 |
-| **6** | Year | 2000 – 2099 |
-| **7** | Exit | Back to the previous menu |
+| **1** | Hour | 0-23 |
+| **2** | Minute | 0-59 |
+| **3** | Second | 0-59 |
+| **4** | Date | 1-31 |
+| **5** | Month | 1-12 |
+| **6** | Year | 2000-2099 |
+| **7** | Exit | Back to previous menu |
 
-Type the number and press a non-digit key (for example `#`) to save. Wrong values show *Invalid! Retry*.
-
+Type the value and press a non-digit key (for example `#`) to save. Out-of-range values show *Invalid! Retry*.
 
 ---
 
-## 🛠️ Customising the Defaults
+## Configuration
 
-Open `src/main.c` and edit the `#define` lines at the top:
+Edit the `#define` lines at the top of `src/main.c`:
 
 ```c
 #define TEMP_LIMIT        40     // alarm above this temperature (°C)
 #define GAS_LIMIT         300    // alarm above this gas reading (0-1023)
 #define DEFAULT_PASSWORD  1234   // starting password
-#define MENU_WAIT_TIME    30000  // menu time-out in milliseconds
+#define MENU_WAIT_TIME    30000  // menu time-out (ms)
 #define POPUP_EVERY       10000  // last-event popup interval (ms)
 #define POPUP_FOR         3000   // last-event popup duration (ms)
 ```
 
-Rebuild and flash again after any change. The alert duration is the `delay_ms(2500)` line inside `check_for_danger()`.
+Rebuild and re-flash after any change. The alert duration is the `delay_ms(2500)` call inside `check_for_danger()`.
 
 ---
 
-## 🧩 Code Organisation
+## Code Walkthrough
 
-`main.c` is split into numbered sections, so you can read it top to bottom:
+`main.c` is divided into numbered sections that read top to bottom:
 
 | Section | Content |
 |:-:|---|
 | 1 | Settings (`#define`) |
-| 2–3 | Event type and shared variables |
-| 4 | 1 ms software clock using Timer 0 |
+| 2-3 | Event type and shared variables |
+| 4 | 1 ms software clock on Timer 0 |
 | 5 | Buzzer, LED and Switch 2 |
 | 6 | Switch 1 interrupt (opens the menu) |
-| 7–8 | Gas sensor and temperature display helper |
+| 7-8 | Gas sensor and temperature display helper |
 | 9 | Start-up splash screens |
 | 10 | Saving and showing the last alarm event |
-| 11 | `check_for_danger()` – compares readings with limits and shows the alert |
+| 11 | `check_for_danger()`: compares readings with limits and shows the alert |
 | 12 | Normal screen |
 | 13 | Password, number entry, RTC, set-point and password menus, lock-out |
-| 14 | `main()` – the main loop |
-
-### Main loop
+| 14 | `main()` loop |
 
 ```mermaid
 flowchart LR
@@ -396,39 +382,39 @@ flowchart LR
 
 ---
 
-## 🩺 Troubleshooting
+## Troubleshooting
 
-| Problem | Likely cause and fix |
+| Symptom | Likely cause / fix |
 |---|---|
-| LCD is blank | Adjust the contrast potentiometer near the LCD; check the LCD data wires |
-| Temperature always shows a wrong or very high value | Check the LM35 wiring (5 V, GND, output) and the ADC conversion in `LM35.c` |
-| Gas alert always on | Let the MQ-2 warm up for a minute or two; adjust the sensor's on-board potentiometer or raise `GAS_LIMIT` |
-| Keypad gives wrong keys | Check the ribbon cable orientation and the key table in `KPM.c` |
-| Time resets to 00:00:00 after power-off | Check the RTC battery (coin cell on the board) |
-| Cannot flash | Check COM port, baud rate and that the ISP switch is in program mode |
-| Menu never opens | Check the Switch 1 wire on `P0.1` and that the interrupt setup runs |
-| Buzzer silent | Check the buzzer pin wire; make sure Switch 2 (mute) was not pressed |
+| Blank LCD | Adjust the contrast pot near the LCD; check data wires |
+| Temperature wrong or very high | Check LM35 wiring (5 V, GND, output) and the ADC conversion in `LM35.c` |
+| Gas alert always on | Let the MQ-2 warm up for a minute or two; tune its on-board pot or raise `GAS_LIMIT` |
+| Wrong keypad keys | Check ribbon cable orientation and the key table in `KPM.c` |
+| Clock resets to 00:00:00 after power-off | Check the RTC coin cell |
+| Cannot flash | Verify COM port, baud rate and that the ISP switch is in program mode |
+| Menu does not open | Check the Switch 1 wire on `P0.1` and that interrupt setup runs |
+| Buzzer silent | Check the buzzer wire and make sure Switch 2 (mute) was not pressed |
 
 ---
 
-## 🔭 Limitations and Future Work
+## Known Limitations and Roadmap
 
 **Limitations**
 
-- The password, temperature limit and gas limit are stored in RAM only. **They return to the defaults after a power cycle.**
-- While the 2.5-second alert or a delay screen is showing, the sensors are not read.
-- The keypad password is numeric only.
+- Password and both limits live in RAM only, so they **revert to defaults after a power cycle**.
+- Sensors are not read while the 2.5 s alert or a delay screen is showing.
+- The password is numeric only.
 
-**Possible improvements**
+**Planned improvements**
 
-- [ ] Store settings in flash / EEPROM
-- [ ] Add SMS or app notifications
-- [ ] Add a relay to switch off a gas valve
+- [ ] Persist settings in flash / EEPROM
+- [ ] SMS or app notifications
+- [ ] Relay to cut off a gas valve
 
 ---
 
-## 👤 Author
+## Credits
 
-**Balaji Pidikiti**
+Developed by **[Your Friend's Name]**.
 
-<p align="center"><sub>⭐ If you found this project useful, consider giving it a star.</sub></p>
+<p align="center"><sub>If this project helped you, a star is appreciated.</sub></p>
