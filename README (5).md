@@ -459,6 +459,6 @@ Rebuild and flash again after any change. The alert duration is the `delay_ms(25
 
 ## 👤 Author
 
-**Balaji Pidikiti**
+**TEJA REDDY**
 
 <p align="center"><sub>⭐ If you found this project useful, consider giving it a star.</sub></p>
