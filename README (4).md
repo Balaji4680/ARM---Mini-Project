@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="images/banner.svg" alt="Kitchen Safety – Heat and Gas Monitoring System" width="100%"/>
+  <img width="2400" height="640" alt="banner" src="https://github.com/user-attachments/assets/df69613c-2ad4-4f9f-a1e1-e99e69ea15f9" />
+
 </p>
 
 <p align="center">
@@ -47,7 +48,8 @@
 
 ## 🎯 Overview
 
-<img src="images/sec-overview.svg" alt="Overview: two sensors, one controller, instant alerts" width="100%"/>
+<img width="2400" height="200" alt="sec-overview" src="https://github.com/user-attachments/assets/d8ecc50d-fbde-4c38-9075-62ea1e63f230" />
+
 
 The system continuously reads a **LM35** temperature sensor and an **MQ-2** gas sensor. The live values and the real-time clock appear on a 16x2 LCD. If either reading goes above its limit, the buzzer and LED turn on and an alert message is displayed. All settings are protected by a keypad password and are edited from an on-screen menu.
 
@@ -60,7 +62,8 @@ The system continuously reads a **LM35** temperature sensor and an **MQ-2** gas 
 ### 🧭 How It Works
 
 <p align="center">
-  <img src="images/how-it-works.svg" alt="Sensors and keypad feed the LPC2148, which drives the LCD, buzzer, LED and RTC" width="100%"/>
+  <img width="2400" height="760" alt="how-it-works" src="https://github.com/user-attachments/assets/0f31bb2d-dccb-4b82-8317-bd13778ae6e2" />
+
 </p>
 
 ### ⚡ Quick Start
@@ -97,7 +100,8 @@ The system continuously reads a **LM35** temperature sensor and an **MQ-2** gas 
 
 ## 🧰 Hardware Required
 
-<img src="images/sec-hardware.svg" alt="Hardware: everything you need sits on one development board" width="100%"/>
+<img width="2400" height="200" alt="sec-hardware" src="https://github.com/user-attachments/assets/7d7fd86e-03fe-478c-8be7-5bff3de47b93" />
+
 
 | # | Component | Purpose |
 |:-:|---|---|
@@ -186,7 +190,8 @@ Copy the matching `.c` files of these drivers into the project folder too, and a
 
 ## 🚀 Build and Flash
 
-<img src="images/sec-build.svg" alt="Build and flash: from source code to a running board in five steps" width="100%"/>
+<img width="2400" height="200" alt="sec-build" src="https://github.com/user-attachments/assets/e5ad4837-888f-4de9-a85e-c94c10536f14" />
+
 
 <details open>
 <summary><b>Step 1 – Create the Keil project</b></summary>
@@ -233,7 +238,8 @@ The Vector ID and project title should now appear on the LCD.
 
 ## 🕹️ How to Use
 
-<img src="images/sec-usage.svg" alt="How to use: read the screen, react to the alarm, use the keypad" width="100%"/>
+<img width="2400" height="200" alt="sec-usage" src="https://github.com/user-attachments/assets/8ef565f2-9129-4e52-aaee-7a2dd5113511" />
+
 
 ### 1. Start-up
 
@@ -265,7 +271,8 @@ DD/MM/YYYY S:x
 The two screens below show what to expect: the normal screen, and the alert for whichever reading goes high.
 
 <p align="center">
-  <img src="images/alarm-states.svg" alt="LCD screens: normal, temperature alert and gas alert" width="100%"/>
+  <img width="2400" height="640" alt="alarm-states" src="https://github.com/user-attachments/assets/954e7e23-d66a-423f-8ce0-64c621b58827" />
+
 </p>
 
 When temperature or gas **first goes above its limit**:
@@ -293,12 +300,14 @@ Real photos from the board:
 #### Alarm flow
 
 <p align="center">
-  <img src="images/flow-alarm.svg" alt="Alarm flow: read sensors, compare with limits, then alarm and alert or stay normal" width="100%"/>
+  <img width="2400" height="880" alt="flow-alarm" src="https://github.com/user-attachments/assets/567ca460-8c6e-4483-a16c-7126c1801b5d" />
+
 </p>
 
 ### 4. Open the Settings Menu
 
-<img src="images/sec-security.svg" alt="Settings and security: password-locked menu with auto-lock after 3 mistakes" width="100%"/>
+<img width="2400" height="200" alt="sec-security" src="https://github.com/user-attachments/assets/9a1a8c5e-0880-40c4-aec3-59fb8a70aef4" />
+
 
 1. Press **Switch 1**.
 2. Type the password on the keypad (digits appear as `*`).
@@ -356,7 +365,8 @@ The menu closes by itself after **30 seconds** without a key press.
 #### Access and menu flow
 
 <p align="center">
-  <img src="images/flow-menu.svg" alt="Access and menu flow: password check, lock after three wrong tries, settings menu options" width="100%"/>
+  <img width="2400" height="960" alt="flow-menu" src="https://github.com/user-attachments/assets/ddc88c57-2822-4e09-ab62-586c1ce97b64" />
+
 </p>
 
 ### 6. RTC Menu
@@ -414,14 +424,16 @@ Rebuild and flash again after any change. The alert duration is the `delay_ms(25
 ### Main loop
 
 <p align="center">
-  <img src="images/flow-main-loop.svg" alt="Main loop: check switch, read sensors, check danger, drive buzzer and LED, draw screen, popup, repeat" width="100%"/>
+  <img width="2400" height="680" alt="flow-main-loop" src="https://github.com/user-attachments/assets/cb46b944-7d0b-4f69-8a96-c05e45456391" />
+
 </p>
 
 ---
 
 ## 🩺 Troubleshooting
 
-<img src="images/sec-troubleshoot.svg" alt="Troubleshooting: most problems are wiring, power or settings" width="100%"/>
+<img width="2400" height="200" alt="sec-troubleshoot" src="https://github.com/user-attachments/assets/4d0b9023-558f-48cf-99c5-19abba676771" />
+
 
 | Problem | Likely cause and fix |
 |---|---|
